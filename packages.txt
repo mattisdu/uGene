@@ -1,0 +1,11 @@
+pip install numba
+pip install scipy
+pip install numpy
+pip install pandas
+pip install scikit-learn
+pip install umap-learn
+pip install plotly
+pip install dash
+pip install dash_bootstrap_components
+pip install dash_html_components
+pip install tk

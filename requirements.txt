@@ -1,0 +1,11 @@
+numba
+scipy
+numpy
+pandas
+scikit-learn
+umap-learn 
+plotly
+dash
+dash_bootstrap_components
+dash_html_components
+tk
