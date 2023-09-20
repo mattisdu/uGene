@@ -1,11 +1,15 @@
+pynndescent==0.5.8
 numba
 scipy
 numpy
 pandas
 scikit-learn
 umap-learn 
+biopython
+bio
 plotly
 dash
 dash_bootstrap_components
 dash_html_components
 tk
+psutil

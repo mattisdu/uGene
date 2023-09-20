@@ -1,0 +1,13 @@
+The MIT License (MIT)
+
+Copyright (c) 2023 Mattis Kaumann, Goethe-Universität Frankfurt am Main
+
+Permission is granted, free of charge, to any individual or entity obtaining a copy of this software and its associated documentation (collectively referred to as the "Software"). 
+The recipient is allowed to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. This right is also extended to those to whom the Software may be provided, under the following conditions:
+
+1. The copyright notice and this permission notice must be included in all copies or significant portions of the Software.
+
+2. THE SOFTWARE IS DELIVERED "AS IS", WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED. This includes, but is not limited to, 
+warranties of merchantability, fitness for a particular purpose, or non-infringement. In no circumstances shall the authors or copyright holders be held responsible for any claims, 
+damages, or other liabilities, whether in an action of contract, tort, or otherwise, that may arise from or in connection with the Software or its use.
+

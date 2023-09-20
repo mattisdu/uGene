@@ -1,6 +1,15 @@
 """
-This is the core file of uGene and performs the uMap clustering. All inputs being made by command line input.
-Example: $> python uGeneCore.py -v -f exampleData.phyloprofile -t [{'y_axis':'geneID','x_axis':'ncbiID','jobs':'gene','values':['FAS_F','FAS_B']}]
+uGeneCore.py
+Version: 0.5
+Beschreibung: This is the core file of uGene and performs the uMap clustering. All inputs being made by command line input.
+              Example: $> python uGeneCore.py -v -f exampleData.phyloprofile -t [{'y_axis':'geneID','x_axis':'ncbiID','jobs':'gene','values':['FAS_F','FAS_B']}]
+
+Autor: Mattis Kaumann
+
+The MIT License (MIT)
+
+Copyright (c) 2023 Mattis Kaumann, Goethe-Universität Frankfurt am Main
+Read more on LICENSE.txt
 """
 UGENE_CORE_VERSION = "0.5"
 

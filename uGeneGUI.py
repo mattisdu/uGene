@@ -1,3 +1,17 @@
+"""
+uGeneGUI.py
+Version: 0.5
+Beschreibung: This is the uGene graphical interface. It's built on Python-Dash and requires a browser for use..
+              Example: $> python uGeneGUI.py
+
+Autor: Mattis Kaumann
+
+The MIT License (MIT)
+
+Copyright (c) 2023 Mattis Kaumann, Goethe-Universität Frankfurt am Main
+Read more on LICENSE.txt
+"""
+
 import numpy as np
 import math
 import os
@@ -556,32 +570,25 @@ app_con = DI(
         # Data like the main profiles will be stored here. File path of loaded data will become the dict keys.
     ),
     color_palettes=DI(
-        Rainbow=['#DF0101', '#FFFF00', '#298A08', '#00FF00', '#01DFD7', '#0101DF', '#F781BE'],
+        Rainbow=['#DD0000', '#FFFF00', '#309000', '#00FF00', '#00DDDD', '#0202BB', '#FF80CC'],
         Black=['#000000', '#000000'],
-        Mixed=['#e6194b', '#3cb44b', '#ffe119', '#0082c8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#d2f53c',
-               '#fabebe', '#008080', '#e6beff', '#aa6e28', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1',
-               '#000080', '#808080', '#ffffff', '#000000'],
-        Colorbrewer=['#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#ffff33', '#a65628', '#f781bf'],
-        Balance_Eyesight=['#77AADD', '#EE8866', '#EEDD88', '#FFAABB', '#99DDFF', '#44BB99', '#BBCC33', '#AAAA00',
-                          '#DDDDDD'],
-        Bright_Colorbilnd=['#4477AA', '#EE6677', '#228833', '#CCBB44', '#66CCEE', '#AA3377', '#BBBBBB'],
-        Contrast_Colorblind=['#EE7733', '#0077BB', '#33BBEE', '#EE3377', '#CC3311', '#009988', '#BBBBBB'],
-        Vibrant_Colorblind=['#CC6677', '#332288', '#DDCC77', '#117733', '#88CCEE', '#882255', '#44AA99', '#999933',
-                            '#AA4499'],
-        Silk_Colorblind=['#BBCCEE', '#CCEEFF', '#CCDDAA', '#EEEEBB', '#FFCCCC', '#DDDDDD', '#222255', '#225555',
-                         '#225522', '#666633', '#663333', '#555555'],
-        Seaborn_Colorblind=['#0072b2', '#009e73', '#d55e00', '#cc79a7', '#f0e442', '#56b4e9'],
-        Tableau_Colorblind=['#006ba4', '#ff800f', '#ababab', '#595959', '#5f9ed1', '#c85200', '#898989', '#a2c8ec',
-                            '#ffbc79', '#cfcfcf'],
-        Seaborn_Dark=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd23',
-                      '#17becf'],
-        Bluesky=['#2271b3', '#89cff0', '#3bbcd3', '#058b8c'],
+        Grey=['#7F7F7F', '#7F7F7F'],
         Colorcycle=['#332288', '#88CCEE', '#44AA99', '#117733', '#999933', '#DDCC77', '#CC6677', '#882255', '#AA4499'],
-        Orange_Island=['#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2', '#D55E00', '#CC79A7', '#000000'],
-        Grey=['#7F7F7F', '#7F7F7F']
+        # The following color schematics are sourced online to enhance accessibility for color-blind individuals.
+        # Author: Paul Tol
+        # Email: p.j.j.tol@sron.nl
+        # Title: "Introduction to Colour Schemes"
+        # Accessed Date: 31.08.2023
+        # Source URL: https://personal.sron.nl/~pault/#fig:scheme_bright
+        Bright_Colorbilnd=['#4477AA', '#EE6677', '#228833', '#CCBB44', '#66CCEE', '#AA3377', '#BBBBBB'],
+        Vibrant_Colorblind=['#EE7733', '#0077BB', '#33BBEE', '#EE3377', '#CC3311', '#009988', '#BBBBBB'],
+        Dark_Colorblind=['#CC6677', '#332288', '#DDCC77', '#117733', '#88CCEE', '#882255', '#44AA99', '#999933',
+                         '#AA4499'],
+        Bight_Compromise=['#77AADD', '#EE8866', '#EEDD88', '#FFAABB', '#99DDFF', '#44BB99', '#BBCC33', '#AAAA00',
+                          '#DDDDDD']
     ),
     const=DI(
-        ugene_gui_version="0.4",
+        ugene_gui_version="0.5",
         color_limpid="rgba(235,235,250,0.0)",
         color_phylo_defauild="#FFFFFF",
         phylo_defaild_cat="__none__cat__",
@@ -623,9 +630,7 @@ app.layout = dbc.Container(fluid=True, children=[
         dbc.Card(color="secondary", inverse=True, children=dbc.CardHeader([
             dash.html.H1("uGene Dashboard"),
             dash.html.Div(className="position-absolute top-0 end-0", children=[
-                dbc.Label("uGeneGUI Version: " + str(app_con.const.ugene_gui_version)),
-                dash.html.Br(),
-                dbc.Label("uGeneCore Version: " + str(uGene.UGENE_CORE_VERSION))
+                dbc.Label("Version: " + str(app_con.const.ugene_gui_version) + "/" + str(uGene.UGENE_CORE_VERSION)),
             ])
         ])),
         dash.html.Br()
@@ -1536,14 +1541,16 @@ def createPrePlot(p_data, taxa_main, origin_order, dot_size, dot_opacity, dot_pa
     layout_2d = go.Layout(
         title='2D Scatter Plot',
         xaxis=dict(title='X-Axis'),
-        yaxis=dict(title='Y-Axis')
+        yaxis=dict(title='Y-Axis'),
+        template='plotly_white'
     )
     layout_3d = go.Layout(
         legend={'title': {'text': col_id}, 'tracegroupgap': 0},
         scene={'domain': {'x': [0.0, 1.0], 'y': [0.0, 1.0]},
                'xaxis': {'title': {'text': col_x_3d}},
                'yaxis': {'title': {'text': col_y_2d}},
-               'zaxis': {'title': {'text': col_z_3d}}}
+               'zaxis': {'title': {'text': col_z_3d}}},
+        template='plotly_white'
     )
     layout_matrix_3d = go.Layout(
         legend={'title': {'text': 'geneID'}, 'tracegroupgap': 0},
